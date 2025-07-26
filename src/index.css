@@ -1,0 +1,218 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Pure black */
+    --foreground: 0 0% 95%; /* Light grey/white */
+
+    --card: 4 98% 17%; /* Dark red */
+    --card-foreground: 0 0% 95%;
+
+    --popover: 4 98% 17%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 4 100% 50%; /* Pure red */
+    --primary-foreground: 0 0% 95%;
+
+    --secondary: 4 94% 52%; /* Bright red */
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 4 98% 17%; /* Dark red */
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 4 94% 52%; /* Bright red accent */
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 4 100% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 4 98% 17%; /* Dark red border */
+    --input: 4 98% 17%;
+    --ring: 4 100% 50%; /* Pure red ring */
+
+    --radius: 0.5rem;
+  }
+
+  .light-mode {
+    --background: 0 0% 98%; /* Very light grey */
+    --foreground: 0 0% 0%; /* Pure black */
+
+    --card: 0 0% 96%; /* Light grey card */
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 96%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 4 100% 50%; /* Pure red primary */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 4 94% 52%; /* Bright red secondary */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 88%; /* Medium light grey */
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 4 98% 17%; /* Dark red accent */
+    --accent-foreground: 0 0% 98%;
+
+    --border: 0 0% 85%; /* Light grey border */
+    --input: 0 0% 90%;
+    --ring: 4 100% 50%; /* Pure red ring */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background font-inter text-foreground antialiased;
+    letter-spacing: -0.025em;
+  }
+  
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .cosmic-gradient {
+    background: linear-gradient(135deg, rgba(64, 64, 64, 0.2) 0%, rgba(32, 32, 32, 0.4) 100%);
+  }
+
+  .light-mode .cosmic-gradient {
+    background: linear-gradient(135deg, rgba(230, 230, 230, 0.8) 0%, rgba(200, 200, 200, 0.6) 100%);
+  }
+
+  .cosmic-glow {
+    position: relative;
+  }
+
+  .cosmic-glow::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    border-radius: inherit;
+  }
+
+  .light-mode .cosmic-glow::before {
+    background: radial-gradient(circle at center, rgba(64, 64, 64, 0.08) 0%, transparent 70%);
+  }
+
+  .cosmic-grid {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .light-mode .cosmic-grid {
+    background-image: 
+      linear-gradient(rgba(64, 64, 64, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(64, 64, 64, 0.08) 1px, transparent 1px);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .cosmic-glass {
+    @apply backdrop-blur-sm bg-card border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)];
+  }
+
+  .light-mode .cosmic-glass {
+    @apply backdrop-blur-sm bg-card border border-black/10 shadow-[0_0_15px_rgba(0,0,0,0.05)];
+  }
+  
+  .cosmic-card {
+    @apply bg-card border border-border backdrop-blur-sm;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent;
+  }
+  
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  }
+  
+  .light-mode .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+  }
+  
+  .nav-pill {
+    @apply backdrop-blur-md bg-card border border-border rounded-full;
+  }
+  
+  .nav-pill-item {
+    @apply px-4 py-2 text-sm rounded-full transition-colors;
+  }
+  
+  .nav-pill-item:hover {
+    @apply bg-accent text-accent-foreground;
+  }
+  
+  .nav-pill-item.active {
+    @apply bg-accent text-accent-foreground;
+  }
+  
+  .icon-glow {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+    transition: filter 0.3s ease;
+  }
+
+  .light-mode .icon-glow {
+    filter: drop-shadow(0 0 6px rgba(64, 64, 64, 0.2));
+  }
+  
+  .collapsible-trigger:hover .icon-glow {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  }
+
+  .light-mode .collapsible-trigger:hover .icon-glow {
+    filter: drop-shadow(0 0 10px rgba(64, 64, 64, 0.3));
+  }
+
+  .task-card {
+    @apply transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:border-primary/30;
+  }
+  
+  .task-card.dragging {
+    @apply scale-105 shadow-lg border-primary opacity-70 rotate-1 z-10;
+  }
+  
+  .task-card.dragged-over {
+    @apply border-primary border-dashed;
+  }
+  
+  .task-card-enter {
+    @apply opacity-0 -translate-y-4;
+  }
+  
+  .task-card-enter-active {
+    @apply opacity-100 translate-y-0 transition-all duration-300 ease-out;
+  }
+  
+  .task-card-exit {
+    @apply opacity-100;
+  }
+  
+  .task-card-exit-active {
+    @apply opacity-0 translate-y-4 transition-all duration-300 ease-in;
+  }
+  
+  .column-highlight {
+    @apply bg-accent/20 transition-all duration-300;
+  }
+}
