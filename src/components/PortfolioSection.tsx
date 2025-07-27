@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
+import {easeOut, motion} from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -18,29 +18,49 @@ const PortfolioSection = () => {
       description: 'Modern e-commerce solution with advanced analytics',
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600',
       tags: ['React', 'Node.js', 'MongoDB'],
-      links: { demo: '#', github: '#' }
     },
     {
       title: 'Security Dashboard',
       description: 'Real-time cybersecurity monitoring platform',
       image: 'https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=600',
       tags: ['Vue.js', 'Python', 'PostgreSQL'],
-      links: { demo: '#', github: '#' }
     },
     {
       title: 'Mobile Banking App',
       description: 'Secure mobile banking application',
       image: 'https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=600',
       tags: ['React Native', 'Firebase', 'Stripe'],
-      links: { demo: '#', github: '#' }
     },
     {
-      title: 'Cloud Infrastructure',
-      description: 'Scalable cloud deployment solution',
-      image: 'https://images.pexels.com/photos/451844/pexels-photo-451844.jpeg?auto=compress&cs=tinysrgb&w=600',
-      tags: ['AWS', 'Docker', 'Kubernetes'],
-      links: { demo: '#', github: '#' }
+      title: 'AI Chatbot',
+      description: 'Intelligent chatbot for customer support',
+      image: 'https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg?auto=compress&cs=tinysrgb&w=600',
+      tags: ['Python', 'TensorFlow', 'Flask'],
     },
+    {
+      title: 'Blockchain Explorer',
+      description: 'Decentralized blockchain transaction explorer',
+      image: 'https://images.pexels.com/photos/267614/pexels-photo-267614.jpeg?auto=compress&cs=tinysrgb&w=600',
+      tags: ['Solidity', 'Ethereum', 'Web3.js'],
+    },
+    {
+      title: 'Real Estate Platform',
+      description: 'Comprehensive real estate management system',
+      image: 'https://images.pexels.com/photos/1643387/pexels-photo-1643387.jpeg?auto=compress&cs=tinysrgb&w=600',
+      tags: ['Angular', 'Node.js', 'MySQL'],
+    },
+    {
+      title: 'Travel Booking System',
+      description: 'All-in-one travel booking and management platform',
+      image: 'https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=600',
+      tags: ['Next.js', 'GraphQL', 'Apollo'],
+    },
+    {
+      title: 'Fitness Tracker',
+      description: 'Personalized fitness tracking and coaching app',
+      image: 'https://images.pexels.com/photos/3825530/pexels-photo-3825530.jpeg?auto=compress&cs=tinysrgb&w=600',
+      tags: ['Flutter', 'Dart', 'Firebase'],
+    }
   ];
 
   const containerVariants = {
@@ -61,7 +81,7 @@ const PortfolioSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -74,13 +94,13 @@ const PortfolioSection = () => {
       rotateY: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
 
   return (
-    <section className="w-full py-20 px-6 md:px-12 bg-background relative overflow-hidden" ref={ref}>
+    <section id={"portfolio"} className="w-full py-20 px-6 md:px-12 bg-background relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 cosmic-grid opacity-5"></div>
       
       <div className="max-w-7xl mx-auto space-y-16 relative z-10">
@@ -153,31 +173,6 @@ const PortfolioSection = () => {
                         {tag}
                       </motion.span>
                     ))}
-                  </div>
-                  
-                  <div className="flex space-x-3 pt-2">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button size="sm" variant="outline" asChild className="group/btn">
-                        <a href={project.links.demo}>
-                          <ExternalLink className="mr-2 h-3 w-3 transition-transform group-hover/btn:translate-x-1" />
-                          Demo
-                        </a>
-                      </Button>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button size="sm" variant="outline" asChild className="group/btn">
-                        <a href={project.links.github}>
-                          <Github className="mr-2 h-3 w-3 transition-transform group-hover/btn:rotate-12" />
-                          Code
-                        </a>
-                      </Button>
-                    </motion.div>
                   </div>
                 </CardContent>
               </Card>

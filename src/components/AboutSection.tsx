@@ -2,9 +2,10 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Users, Award, Target } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
+import {easeOut, motion} from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import {scrollToSection} from "@/lib/scrollToSection.ts";
 
 const AboutSection = () => {
   const { t } = useLanguage();
@@ -35,7 +36,7 @@ const AboutSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut,
       }
     }
   };
@@ -47,72 +48,72 @@ const AboutSection = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: easeOut,
       }
     }
   };
 
   return (
-    <section className="w-full py-20 px-6 md:px-12 bg-background relative overflow-hidden" ref={ref}>
+    <section id="about" className="w-full py-20 px-6 md:px-12 bg-background relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 cosmic-grid opacity-5"></div>
-      
+
       {/* Background Image */}
-      <motion.div 
-        className="absolute top-10 left-10 w-80 h-80 opacity-10"
+      <motion.div
+        className="absolute top-10 left-10 w-80 h-80 opacity-20"
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 0.1, scale: 1 } : {}}
+        animate={isInView ? { opacity: 0.2, scale: 1 } : {}}
         transition={{ duration: 1.2 }}
       >
-        <img 
-          src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800" 
+        <img
+          src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
           alt="Team collaboration"
           className="w-full h-full object-cover rounded-lg"
         />
       </motion.div>
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div 
+          <motion.div
             className="space-y-8"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
             <div className="space-y-4">
-              <motion.h2 
+              <motion.h2
                 className="text-3xl md:text-4xl font-bold tracking-tighter text-foreground"
                 variants={itemVariants}
               >
                 {t('about.title')}
               </motion.h2>
-              <motion.p 
+              <motion.p
                 className="text-xl text-primary font-medium"
                 variants={itemVariants}
               >
                 {t('about.subtitle')}
               </motion.p>
-              <motion.p 
+              <motion.p
                 className="text-muted-foreground text-lg leading-relaxed"
                 variants={itemVariants}
               >
                 {t('about.description')}
               </motion.p>
             </div>
-            
+
             <motion.div variants={itemVariants}>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" className="group bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary">
-                  Learn More About Us
+                <Button onClick={() => scrollToSection('portfolio')} size="lg" className="group bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary">
+                  {t('about.cta')}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </motion.div>
             </motion.div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="grid grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
@@ -121,16 +122,16 @@ const AboutSection = () => {
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="text-center space-y-4"
                   variants={statVariants}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.1,
                     transition: { duration: 0.2 }
                   }}
                 >
-                  <motion.div 
+                  <motion.div
                     className="mx-auto p-4 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 w-fit"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
@@ -138,7 +139,7 @@ const AboutSection = () => {
                     <Icon className="h-8 w-8 text-primary" />
                   </motion.div>
                   <div>
-                    <motion.div 
+                    <motion.div
                       className="text-3xl font-bold text-foreground"
                       initial={{ opacity: 0 }}
                       animate={isInView ? { opacity: 1 } : {}}

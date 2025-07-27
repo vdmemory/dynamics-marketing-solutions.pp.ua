@@ -5,12 +5,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
+import {easeOut, motion} from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import {configCompany} from "@/lib/configCompany.ts";
 
 const ContactSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -18,17 +19,17 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: t('contact.email'),
-      value: 'hello@itcompany.com'
+      value: configCompany.email,
     },
     {
       icon: Phone,
       label: t('contact.phone'),
-      value: '+1 (555) 123-4567'
+      value: configCompany.phone,
     },
     {
       icon: MapPin,
       label: t('contact.address'),
-      value: '123 Tech Street, Digital City'
+      value: language === 'en' ? configCompany.addressEng : configCompany.address,
     },
   ];
 
@@ -50,7 +51,7 @@ const ContactSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -62,7 +63,7 @@ const ContactSection = () => {
       x: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -74,13 +75,15 @@ const ContactSection = () => {
       x: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
 
+  const actionEmail = `https://formsubmit.co/${configCompany.formEmail}`;
+
   return (
-    <section className="w-full py-20 px-6 md:px-12 bg-background relative overflow-hidden" ref={ref}>
+    <section id={"contact"} className="w-full py-20 px-6 md:px-12 bg-background relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 cosmic-grid opacity-5"></div>
       
       {/* Background decorative image */}
@@ -132,43 +135,44 @@ const ContactSection = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <CardTitle className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Send us a message
+                    {t('contact.form_title')}
                   </CardTitle>
                 </motion.div>
               </CardHeader>
               <CardContent className="space-y-6">
+                <form action={actionEmail} method="POST" className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <motion.div
                     whileFocus={{ scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Input placeholder="First Name" className="border-primary/20 focus:border-primary" />
+                    <Input placeholder={t('contact.form_first_name')} className="border-primary/20 focus:border-primary" />
                   </motion.div>
                   <motion.div
                     whileFocus={{ scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Input placeholder="Last Name" className="border-primary/20 focus:border-primary" />
+                    <Input placeholder={t('contact.form_last_name')} className="border-primary/20 focus:border-primary" />
                   </motion.div>
                 </div>
                 <motion.div
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Input placeholder="Email" type="email" className="border-primary/20 focus:border-primary" />
+                  <Input placeholder={t('contact.form_email')} type="email" className="border-primary/20 focus:border-primary" />
                 </motion.div>
                 <motion.div
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Input placeholder="Phone" type="tel" className="border-primary/20 focus:border-primary" />
+                  <Input placeholder={t('contact.form_phone')} type="tel" className="border-primary/20 focus:border-primary" />
                 </motion.div>
                 <motion.div
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
                   <Textarea 
-                    placeholder="Tell us about your project..." 
+                    placeholder={t('contact.form_message')}
                     className="min-h-32 border-primary/20 focus:border-primary" 
                   />
                 </motion.div>
@@ -177,9 +181,10 @@ const ContactSection = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary">
-                    Send Message
+                    {t('contact.form_submit')}
                   </Button>
                 </motion.div>
+                </form>
               </CardContent>
             </Card>
           </motion.div>
@@ -197,13 +202,13 @@ const ContactSection = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                Get in touch
+                {t('contact.title')}
               </motion.h3>
               <motion.p 
                 className="text-muted-foreground"
                 variants={itemVariants}
               >
-                Ready to transform your business with cutting-edge technology? Contact us today and let's discuss your project.
+                {t('contact.subtitle2')}
               </motion.p>
             </div>
             

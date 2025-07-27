@@ -2,12 +2,12 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
+import {easeOut, motion} from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const TeamSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -16,25 +16,25 @@ const TeamSection = () => {
       name: 'Alex Johnson',
       position: 'CEO & Founder',
       image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-      social: { github: '#', linkedin: '#', twitter: '#' }
+      message: t('team.alex.message')
     },
     {
       name: 'Sarah Chen',
       position: 'CTO',
       image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
-      social: { github: '#', linkedin: '#', twitter: '#' }
+        message: t('team.sarah.message')
     },
     {
       name: 'Mike Rodriguez',
       position: 'Lead Developer',
       image: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400',
-      social: { github: '#', linkedin: '#', twitter: '#' }
+        message: t('team.mike.message')
     },
     {
       name: 'Emily Davis',
       position: 'Security Expert',
       image: 'https://images.pexels.com/photos/3756681/pexels-photo-3756681.jpeg?auto=compress&cs=tinysrgb&w=400',
-      social: { github: '#', linkedin: '#', twitter: '#' }
+        message: t('team.emily.message')
     },
   ];
 
@@ -56,7 +56,7 @@ const TeamSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -69,13 +69,13 @@ const TeamSection = () => {
       rotateY: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
 
   return (
-    <section className="w-full py-20 px-6 md:px-12 bg-card relative overflow-hidden" ref={ref}>
+    <section id={"team"} className="w-full py-20 px-6 md:px-12 bg-card relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 cosmic-grid opacity-5"></div>
       
       {/* Background decorative elements */}
@@ -141,7 +141,7 @@ const TeamSection = () => {
                 transition: { duration: 0.3 }
               }}
             >
-              <Card className="group border-border bg-background/80 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 overflow-hidden">
+              <Card className="min-h-72 group border-border bg-background/80 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 overflow-hidden">
                 <CardContent className="p-6 text-center space-y-4">
                   <motion.div 
                     className="relative w-24 h-24 mx-auto rounded-full overflow-hidden"
@@ -164,32 +164,7 @@ const TeamSection = () => {
                     </motion.h4>
                     <p className="text-muted-foreground">{member.position}</p>
                   </div>
-                  <div className="flex justify-center space-x-3">
-                    <motion.a 
-                      href={member.social.github} 
-                      className="p-2 hover:text-primary transition-colors"
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Github className="h-4 w-4" />
-                    </motion.a>
-                    <motion.a 
-                      href={member.social.linkedin} 
-                      className="p-2 hover:text-primary transition-colors"
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Linkedin className="h-4 w-4" />
-                    </motion.a>
-                    <motion.a 
-                      href={member.social.twitter} 
-                      className="p-2 hover:text-primary transition-colors"
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Twitter className="h-4 w-4" />
-                    </motion.a>
-                  </div>
+                    <p className="text-muted-foreground text-sm">{member.message}</p>
                 </CardContent>
               </Card>
             </motion.div>

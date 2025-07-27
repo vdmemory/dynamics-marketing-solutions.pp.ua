@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
+import {easeOut, motion} from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -10,36 +10,38 @@ const BrandsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const brands = [
-    { 
-      name: 'TechCorp', 
-      logo: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=200',
-      color: 'from-blue-500/20 to-purple-500/20'
+    {
+      name: 'Google',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
     },
-    { 
-      name: 'Innovation Ltd', 
-      logo: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=200',
-      color: 'from-green-500/20 to-teal-500/20'
+    {
+      name: 'Microsoft',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg',
     },
-    { 
-      name: 'Future Systems', 
-      logo: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=200',
-      color: 'from-red-500/20 to-orange-500/20'
+    {
+      name: 'Amazon Web Services',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
     },
-    { 
-      name: 'Digital Solutions', 
-      logo: 'https://images.pexels.com/photos/451844/pexels-photo-451844.jpeg?auto=compress&cs=tinysrgb&w=200',
-      color: 'from-cyan-500/20 to-blue-500/20'
+    {
+      name: 'IBM',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg',
     },
-    { 
-      name: 'Cloud Nine', 
-      logo: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=200',
-      color: 'from-purple-500/20 to-pink-500/20'
+    {
+      name: 'GitHub',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg',
     },
-    { 
-      name: 'Secure Data', 
-      logo: 'https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=200',
-      color: 'from-yellow-500/20 to-red-500/20'
+    {
+      name: 'Apple',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
     },
+    {
+      name: 'Tesla',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png',
+    },
+    {
+      name: 'Meta',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg',
+    }
   ];
 
   const containerVariants = {
@@ -60,7 +62,7 @@ const BrandsSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -72,7 +74,7 @@ const BrandsSection = () => {
       scale: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -129,7 +131,7 @@ const BrandsSection = () => {
         </motion.div>
         
         <motion.div 
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-8 items-center"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -146,14 +148,14 @@ const BrandsSection = () => {
               }}
             >
               <motion.div 
-                className={`w-16 h-16 rounded-lg bg-gradient-to-br ${brand.color} flex items-center justify-center overflow-hidden border border-primary/10 group-hover:border-primary/30 transition-all duration-300`}
+                className={`w-auto h-12 rounded-lg bg-gradient-to-br flex items-center justify-center overflow-hidden border border-primary/10 group-hover:border-primary/30 transition-all duration-300`}
                 whileHover={{ rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
                 <img 
                   src={brand.logo}
                   alt={brand.name}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                  className="w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>

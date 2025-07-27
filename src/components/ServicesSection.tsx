@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Shield, Smartphone, Cloud } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
+import {easeOut, motion} from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -37,7 +37,7 @@ const ServicesSection = () => {
       icon: Cloud,
       titleKey: 'services.cloud.title',
       descriptionKey: 'services.cloud.description',
-      image: 'https://images.pexels.com/photos/451844/pexels-photo-451844.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=400',
       gradient: 'from-cyan-500/20 to-blue-500/20'
     },
   ];
@@ -60,7 +60,7 @@ const ServicesSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -72,20 +72,20 @@ const ServicesSection = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
 
   return (
-    <section className="w-full py-20 px-6 md:px-12 bg-card relative overflow-hidden" ref={ref}>
+    <section id={"services"} className="w-full py-20 px-6 md:px-12 bg-card relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 cosmic-grid opacity-5"></div>
       
       {/* Background decorative image */}
       <motion.div 
-        className="absolute top-20 right-20 w-64 h-64 opacity-5"
+        className="absolute top-20 right-20 w-64 h-64 opacity-20"
         initial={{ opacity: 0, rotate: -45 }}
-        animate={isInView ? { opacity: 0.05, rotate: 0 } : {}}
+        animate={isInView ? { opacity: 0.2, rotate: 0 } : {}}
         transition={{ duration: 1.5 }}
       >
         <img 

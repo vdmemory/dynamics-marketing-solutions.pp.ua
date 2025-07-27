@@ -11,6 +11,7 @@ import BrandsSection from '@/components/BrandsSection';
 import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import Features from "@/components/Features.tsx";
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
         <ServicesSection />
         <PortfolioSection />
         <TeamSection />
+          <Features />
         <TestimonialsSection />
         <BrandsSection />
         <FAQSection />

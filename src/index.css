@@ -69,6 +69,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background font-inter text-foreground antialiased;
     letter-spacing: -0.025em;

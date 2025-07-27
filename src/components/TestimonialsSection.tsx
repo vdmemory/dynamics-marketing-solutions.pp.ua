@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
+import {easeOut, motion} from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -13,21 +13,21 @@ const TestimonialsSection = () => {
 
   const testimonials = [
     {
-      quote: "Outstanding development team! They delivered our project on time and exceeded our expectations. The quality of code and attention to detail is remarkable.",
+      quote: t('testimonials.client1'),
       author: "John Smith",
       position: "CEO at TechStart",
       avatar: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200",
       rating: 5
     },
     {
-      quote: "Their cybersecurity expertise saved our company from potential threats. Professional, reliable, and highly skilled team.",
+      quote: t('testimonials.client2'),
       author: "Maria Garcia",
       position: "CTO at SecureData",
       avatar: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=200",
       rating: 5
     },
     {
-      quote: "The mobile app they developed transformed our business. User-friendly, fast, and beautifully designed. Highly recommend!",
+      quote: t('testimonials.client3'),
       author: "David Chen",
       position: "Founder at MobileFirst",
       avatar: "https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=200",
@@ -53,7 +53,7 @@ const TestimonialsSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -66,7 +66,7 @@ const TestimonialsSection = () => {
       rotateX: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -78,7 +78,7 @@ const TestimonialsSection = () => {
       scale: 1,
       transition: {
         duration: 0.3,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };

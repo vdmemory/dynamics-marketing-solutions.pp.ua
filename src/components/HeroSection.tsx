@@ -2,7 +2,9 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
+import { easeOut, motion} from 'framer-motion';
+import {scrollToSection} from "@/lib/scrollToSection.ts";
+import bgHero from '@/assets/bg-hero.jpg';
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -25,43 +27,22 @@ const HeroSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
 
-  const floatingVariants = {
-    animate: {
-      y: [-10, 10, -10],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 md:px-12 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 cosmic-grid opacity-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background"></div>
-      
-      {/* Hero Image */}
-      <motion.div 
-        className="absolute top-20 right-10 w-96 h-96 opacity-20"
-        variants={floatingVariants}
-        animate="animate"
-      >
-        <img 
-          src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800" 
-          alt="Technology"
-          className="w-full h-full object-cover rounded-full blur-sm"
-        />
-      </motion.div>
+      <div className="absolute inset-0" style={{
+        backgroundImage: `url(${bgHero})`,
+        backgroundSize: 'cover',
+      }}></div>
 
       {/* Animated background shapes */}
-      <motion.div 
+      <motion.div
         className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
@@ -73,7 +54,7 @@ const HeroSection = () => {
           ease: "easeInOut"
         }}
       />
-      <motion.div 
+      <motion.div
         className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-secondary/20 rounded-full blur-3xl"
         animate={{
           scale: [1.2, 1, 1.2],
@@ -116,18 +97,11 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button size="lg" className="group bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary transition-all duration-300">
+            <Button onClick={
+              () => scrollToSection('contact')
+            } size="lg" className="group bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary transition-all duration-300">
               {t('hero.cta')}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button size="lg" variant="outline" className="group border-2 hover:bg-primary/10">
-              <Play className="mr-2 h-4 w-4" />
-              {t('hero.learn_more')}
             </Button>
           </motion.div>
         </motion.div>

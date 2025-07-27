@@ -1,16 +1,16 @@
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
+import {easeOut, motion} from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const FAQSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const faqs = [
+  const faqsEng = [
     {
       question: "What services do you offer?",
       answer: "We offer comprehensive IT services including software development, cybersecurity solutions, mobile app development, and cloud services. Our team specializes in custom solutions tailored to your business needs."
@@ -31,7 +31,40 @@ const FAQSection = () => {
       question: "How do you ensure project security?",
       answer: "Security is our top priority. We implement industry-standard security practices, conduct regular security audits, use encrypted communications, and follow GDPR compliance guidelines throughout the development process."
     },
+    {
+      question: "Can you help with digital transformation?",
+      answer: "Absolutely! We specialize in helping businesses undergo digital transformation by modernizing legacy systems, implementing cloud solutions, and optimizing business processes through technology."
+    },
   ];
+
+  const faqsUa = [
+    {
+      question: "Які послуги ви надаєте?",
+      answer: "Ми надаємо комплексні ІТ-послуги, включаючи розробку програмного забезпечення, рішення з кібербезпеки, розробку мобільних додатків та хмарні послуги. Наша команда спеціалізується на індивідуальних рішеннях, адаптованих до потреб вашого бізнесу."
+    },
+    {
+      question: "Скільки часу займає типовий проект?",
+      answer: "Терміни виконання проектів залежать від складності та обсягу. Простий мобільний додаток може зайняти 2-3 місяці, тоді як складні корпоративні рішення можуть тривати 6-12 місяців. Ми надаємо детальні терміни під час консультацій."
+    },
+    {
+      question: "Чи надаєте ви постійну підтримку?",
+      answer: "Так, ми пропонуємо комплексну підтримку після запуску, включаючи обслуговування, оновлення, патчі безпеки та технічну допомогу. У нас є гнучкі пакети підтримки для задоволення ваших потреб."
+    },
+    {
+      question: "З якими технологіями ви працюєте?",
+      answer: "Ми працюємо з сучасними технологіями, такими як React, Node.js, Python, React Native, AWS, Azure та багатьма іншими. Наша команда стежить за останніми тенденціями технологій для надання передових рішень."
+    },
+    {
+      question: "Як ви забезпечуєте безпеку проектів?",
+      answer: "Безпека є нашим головним пріоритетом. Ми впроваджуємо стандарти безпеки галузі, проводимо регулярні аудити безпеки, використовуємо зашифровані комунікації та дотримуємося вимог GDPR протягом усього процесу розробки."
+    },
+    {
+      question: "Чи можете ви допомогти з цифровою трансформацією?",
+      answer: "Абсолютно! Ми спеціалізуємося на допомозі бізнесам у цифровій трансформації шляхом модернізації застарілих систем, впровадження хмарних рішень та оптимізації бізнес-процесів за допомогою технологій."
+    },
+  ];
+
+    const faqs = language === 'en' ? faqsEng : faqsUa;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -51,7 +84,7 @@ const FAQSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -63,7 +96,7 @@ const FAQSection = () => {
       x: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
