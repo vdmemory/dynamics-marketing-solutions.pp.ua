@@ -146,32 +146,33 @@ const ContactSection = () => {
                     whileFocus={{ scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Input placeholder={t('contact.form_first_name')} className="border-primary/20 focus:border-primary" />
+                    <Input name={'First Name'} placeholder={t('contact.form_first_name')} className="border-primary/20 focus:border-primary" />
                   </motion.div>
                   <motion.div
                     whileFocus={{ scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Input placeholder={t('contact.form_last_name')} className="border-primary/20 focus:border-primary" />
+                    <Input name={"Last Name"} placeholder={t('contact.form_last_name')} className="border-primary/20 focus:border-primary" />
                   </motion.div>
                 </div>
                 <motion.div
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Input placeholder={t('contact.form_email')} type="email" className="border-primary/20 focus:border-primary" />
+                  <Input name={"Email"} placeholder={t('contact.form_email')} type="email" className="border-primary/20 focus:border-primary" />
                 </motion.div>
                 <motion.div
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Input placeholder={t('contact.form_phone')} type="tel" className="border-primary/20 focus:border-primary" />
+                  <Input name={"Phone"} placeholder={t('contact.form_phone')} type="tel" className="border-primary/20 focus:border-primary" />
                 </motion.div>
                 <motion.div
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Textarea 
+                  <Textarea
+                      name={"message"}
                     placeholder={t('contact.form_message')}
                     className="min-h-32 border-primary/20 focus:border-primary" 
                   />

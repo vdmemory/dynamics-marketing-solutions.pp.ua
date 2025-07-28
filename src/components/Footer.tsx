@@ -3,7 +3,7 @@ import { useLanguage } from '@/hooks/useLanguage';
 import {configCompany} from "@/lib/configCompany.ts";
 import { motion } from 'framer-motion';
 import logo from '@/assets/logo.png';
-import SocialLinks from "@/components/ui/SocialLinks.tsx";
+import SocialLinks from "@/components/SocialLinks.tsx";
 
 const Footer = () => {
   const { t, language } = useLanguage();

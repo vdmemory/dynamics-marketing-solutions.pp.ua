@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import facebook from '../../assets/facebook.png';
-import linkedin from '../../assets/linkedin.png';
-import insa from '../../assets/insta.png';
-import olx from '../../assets/olx.png';
-import prom from '../../assets/prom.png';
+import facebook from '../assets/facebook.png';
+import linkedin from '../assets/linkedin.png';
+import insa from '../assets/insta.png';
+import olx from '../assets/olx.png';
+import prom from '../assets/prom.png';
 import {configCompany} from "@/lib/configCompany.ts";
 
 const SocialLinks = ({isHeader = false} : {isHeader?: boolean}) => {

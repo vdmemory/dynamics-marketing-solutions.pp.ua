@@ -6,7 +6,7 @@ import {scrollToSection} from "@/lib/scrollToSection.ts";
 import {motion} from "framer-motion";
 import logo from "@/assets/logo.png";
 import {configCompany} from "@/lib/configCompany.ts";
-import SocialLinks from "@/components/ui/SocialLinks.tsx";
+import SocialLinks from "@/components/SocialLinks.tsx";
 import {LanguageSwitcher} from "@/components/LanguageSwitcher.tsx";
 
 const Header = () => {
