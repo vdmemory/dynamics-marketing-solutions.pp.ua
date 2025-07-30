@@ -10,8 +10,8 @@ import {
 import { useLanguage } from '@/hooks/useLanguage.tsx';
 
 const languages = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'ua', name: 'Українська', flag: '🇺🇦' },
+    { code: 'en', name: 'EN', flag: '🇺🇸' },
+    { code: 'ua', name: 'UA', flag: '🇺🇦' },
 ];
 
 export function LanguageSwitcher() {
@@ -37,6 +37,9 @@ export function LanguageSwitcher() {
                         className="flex items-center space-x-2 text-gray-300 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 border"
                     >
                         <Globe size={16} />
+                        <span className={`text-sm ${languages[language]}`}>
+                            {currentLanguage?.name}
+                        </span>
                         <span className="text-lg">{currentLanguage?.flag}</span>
                     </Button>
                 </motion.div>
