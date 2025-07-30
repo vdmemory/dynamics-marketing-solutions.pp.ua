@@ -13,7 +13,7 @@ const SocialLinks = ({isHeader = false} : {isHeader?: boolean}) => {
         // { icon: whatsapp, href: configCompany.whatsapp, color: '#EE2024' },
         { icon: linkedin, href: configCompany.linkedin, color: '#2B7AC2' },
         { icon: insa, href: configCompany.instagram, color: '#FBB216' },
-        { icon: olx, href: configCompany.olx, color: '#64B232' },
+        // { icon: olx, href: configCompany.olx, color: '#64B232' },
         { icon: prom, href: configCompany.prom, color: '#FF4500' },
     ];
 
